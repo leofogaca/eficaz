@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
-
 <html lang="pt-br">
 <head>
-<meta charset="utf-8"/>
-<title>Ficha de Cadastro - Eficaz Facility</title>
-<style>
+    <meta charset="utf-8"/>
+    <title>Ficha de Cadastro - Eficaz Facility</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 30px;
@@ -55,216 +53,274 @@
         button:hover {
             background-color: #005bb5;
         }
-    </style>
-<style>
-@media print {
-    * {
-        font-size: 10px !important;
-        line-height: 1.1;
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        background: white;
-    }
-    h1 {
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-    form {
-        padding: 10px;
-        margin: 0;
-        width: 100%;
-        box-shadow: none;
-    }
-    fieldset {
-        border: 1px solid #000;
-        margin: 4px 0;
-        padding: 6px;
-        page-break-inside: avoid;
-    }
-    legend {
-        font-weight: bold;
-        font-size: 11px;
-    }
-    label {
-        font-weight: normal;
-        display: inline-block;
-        width: 22%;
-        margin: 2px 0 0 0;
-        padding: 0;
-        vertical-align: top;
-    }
-    input, select, textarea {
-        width: 75%;
-        display: inline-block;
-        border: none;
-        border-bottom: 1px solid #000;
-        padding: 2px 4px;
-        margin: 2px 0;
-        background: none;
-        vertical-align: top;
-    }
-    textarea {
-        height: 30px;
-    }
-    button, #mensagem, #botao-imprimir {
-        display: none !important;
-    }
-}
-</style></head>
-<body>
-<h1>Ficha de Cadastro - Eficaz Facility</h1>
-<form action="https://script.google.com/macros/s/AKfycbzbhVNi7RTfaYyBgMfH7BxwlwBkuSoirF7ZRF8cpX9UbECIhqH5HRsa-rPfMRJM9oVsjQ/exec" method="post">
-<fieldset>
-<legend>Empresa</legend>
-<label for="empresa">Empresa</label>
-<input id="empresa" name="empresa" type="text" value="Eficaz Facility"/>
-<label for="cnpj">CNPJ</label>
-<input id="cnpj" name="cnpj" type="text" value="37.129.474/0001-48"/>
-</fieldset>
-<fieldset>
-<legend>Colaborador</legend>
-<label for="nome">Nome</label>
-<input id="nome" name="nome" type="text"/>
-<label for="admissao">Data de Admissão</label>
-<input id="admissao" name="admissao" type="date"/>
-<label for="salario">Salário</label>
-<input id="salario" name="salario" step="0.01" type="number"/>
-<label for="experiencia">Experiência</label>
-<input id="experiencia" name="experiencia" type="text"/>
-<label for="cc">C.C.</label><input id="cc" name="cc" type="text"/><label for="funcao">Função</label><input id="funcao" name="funcao" type="text"/><label for="adicional">Adicional</label><input id="adicional" name="adicional" type="text"/><label for="horario">Horário</label><input id="horario" name="horario" type="text"/></fieldset>
-<fieldset>
-<legend>Dados Pessoais</legend>
-<label for="nome_mae">Nome da Mãe</label>
-<input id="nome_mae" name="nome_mae" type="text"/>
-<label for="nome_pai">Nome do Pai</label>
-<input id="nome_pai" name="nome_pai" type="text"/>
-<label for="nascimento">Data de Nascimento</label>
-<input id="nascimento" name="nascimento" type="date"/>
-<label for="naturalidade">Naturalidade</label>
-<input id="naturalidade" name="naturalidade" type="text"/>
-</fieldset>
-<fieldset>
-<legend>Documentação</legend>
-<label for="rg">RG</label>
-<input id="rg" name="rg" type="text"/>
-<label for="rg_uf">UF</label>
-<input id="rg_uf" name="rg_uf" type="text"/>
-<label for="rg_emissao">Data de Emissão do RG</label>
-<input id="rg_emissao" name="rg_emissao" type="date"/>
-<label for="cpf">CPF</label>
-<input id="cpf" name="cpf" type="text"/>
-<label for="ctps">CTPS</label>
-<input id="ctps" name="ctps" type="text"/>
-<label for="ctps_emissao">Data de Emissão da CTPS</label>
-<input id="ctps_emissao" name="ctps_emissao" type="date"/>
-<label for="ctps_serie">Série da CTPS</label>
-<input id="ctps_serie" name="ctps_serie" type="text"/>
-<label for="pis">PIS</label>
-<input id="pis" name="pis" type="text"/>
-<label for="pis_emissao">Data de Emissão do PIS</label>
-<input id="pis_emissao" name="pis_emissao" type="date"/>
-<label for="titulo_eleitor">Título de Eleitor</label>
-<input id="titulo_eleitor" name="titulo_eleitor" type="text"/>
-<label for="zona_secao">Zona/Seção</label>
-<input id="zona_secao" name="zona_secao" type="text"/>
-</fieldset>
-<fieldset>
-<legend>Endereço</legend>
-<label for="endereco">Endereço</label>
-<input id="endereco" name="endereco" type="text"/>
-<label for="complemento">Complemento</label>
-<input id="complemento" name="complemento" type="text"/>
-<label for="cep">CEP</label>
-<input id="cep" name="cep" type="text"/>
-<label for="cidade_estado">Cidade/Estado</label>
-<input id="cidade_estado" name="cidade_estado" type="text"/>
-</fieldset>
-<fieldset><legend>Dependentes</legend><label>Dependente 1 - Nome</label><input name="Dependente 1 - Nome" type="text"/><label>Dependente 1 - Nascimento</label><input name="Dependente 1 - Nascimento" type="date"/><label>Dependente 1 - Parentesco</label><input name="Dependente 1 - Parentesco" type="text"/><label>Dependente 2 - Nome</label><input name="Dependente 2 - Nome" type="text"/><label>Dependente 2 - Nascimento</label><input name="Dependente 2 - Nascimento" type="date"/><label>Dependente 2 - Parentesco</label><input name="Dependente 2 - Parentesco" type="text"/><label>Dependente 3 - Nome</label><input name="Dependente 3 - Nome" type="text"/><label>Dependente 3 - Nascimento</label><input name="Dependente 3 - Nascimento" type="date"/><label>Dependente 3 - Parentesco</label><input name="Dependente 3 - Parentesco" type="text"/><label>Dependente 4 - Nome</label><input name="Dependente 4 - Nome" type="text"/><label>Dependente 4 - Nascimento</label><input name="Dependente 4 - Nascimento" type="date"/><label>Dependente 4 - Parentesco</label><input name="Dependente 4 - Parentesco" type="text"/></fieldset>
-<fieldset>
-<legend>Salário Família</legend>
-<label for="salario_familia">Possui direito?</label>
-<select id="salario_familia" name="salario_familia">
-<option value="Sim">Sim</option>
-<option selected="selected" value="Não">Não</option>
-</select>
-</fieldset>
-<fieldset>
-<legend>Contato</legend>
-<label for="email">E-mail</label>
-<input id="email" name="email" type="email"/>
-<label for="pix">PIX</label>
-<input id="pix" name="pix" type="text"/>
-<label for="telefone">Telefone</label>
-<input id="telefone" name="telefone" type="tel"/>
-</fieldset>
-<fieldset>
-<legend>Responsável pelo Cadastro</legend>
-<label for="data_responsavel">Data e Hora</label>
-<input id="data_responsavel" name="Data" readonly="" type="text"/>
-<label for="responsavel">Nome do Responsável</label>
-<input id="responsavel" name="Nome do Responsável" required="" type="text"/>
-</fieldset>
-<div id="mensagem" style="display:none; color: green; font-weight: bold; margin-top: 20px;">
-    Dados salvos com sucesso!
-</div>
-<button id="botao-imprimir" onclick="window.print();" style="display:none; margin-top: 10px;">Imprimir Formulário</button>
-<div style="text-align: right; margin-top: 10px;">
-<button id="botao-enviar" type="submit">Salvar Dados</button>
-</div>
-</form>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const now = new Date();
-    const formatted = now.toLocaleString("pt-BR");
-    document.getElementById("data_responsavel").value = formatted;
-
-    document.querySelector("form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const form = event.target;
-        const data = new FormData(form);
-
-        fetch(form.action, {
-            method: "POST",
-            body: data,
-        }).then(response => {
-            if (response.ok) {
-                document.getElementById("mensagem").style.display = "block";
-                document.getElementById("botao-imprimir").style.display = "inline-block";
-                form.querySelectorAll("input, textarea, select").forEach(el => el.disabled = true);
-            }
-        }).catch(error => {
-            alert("Erro ao enviar os dados.");
-        });
-    });
-});
-</script><script>
-document.addEventListener("DOMContentLoaded", function () {
-  // Evita que Enter envie o formulário
-  document.querySelectorAll("input, select, textarea").forEach(el => {
-    el.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const formEls = Array.from(document.querySelectorAll("input, select, textarea"));
-        const index = formEls.indexOf(e.target);
-        if (index >= 0 && index < formEls.length - 1) {
-          formEls[index + 1].focus();
+        .dependente-campo {
+            display: none; /* Inicialmente escondidos */
         }
-      }
-    });
-  });
+    </style>
+    <style>
+        @media print {
+            * {
+                font-size: 9px !important;
+                line-height: 1.1;
+            }
+            body {
+                margin: 5mm;
+                padding: 0;
+                background: white;
+                -webkit-column-count: 2; /* Para Chrome, Safari */
+                -moz-column-count: 2;    /* Para Firefox */
+                column-count: 2;         /* Propriedade padrão */
+                -webkit-column-gap: 10px;
+                -moz-column-gap: 10px;
+                column-gap: 10px;
+            }
+            h1 {
+                font-size: 12px;
+                margin-bottom: 8px;
+                break-after: avoid;
+            }
+            form {
+                padding: 8px;
+                margin: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+            fieldset {
+                border: 1px solid #000;
+                margin: 3px 0;
+                padding: 5px;
+                page-break-inside: avoid;
+                break-inside: avoid-column;
+            }
+            legend {
+                font-weight: bold;
+                font-size: 10px;
+                break-after: avoid;
+            }
+            label {
+                font-weight: normal;
+                display: block; /* Melhor para layout em colunas */
+                width: 100%;
+                margin: 2px 0 0 0;
+                padding: 0;
+                vertical-align: top;
+                break-after: avoid;
+            }
+            input, select, textarea {
+                width: 100%;
+                display: block;
+                border: none;
+                border-bottom: 1px solid #000;
+                padding: 2px 4px;
+                margin: 2px 0 5px 0;
+                background: none;
+                vertical-align: top;
+                break-before: avoid;
+            }
+            textarea {
+                height: 30px;
+            }
+            button#botao-enviar {
+                display: block !important; /* Garante que o botão salvar sempre apareça na impressão */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Ficha de Cadastro - Eficaz Facility</h1>
+    <form action="https://script.google.com/macros/s/AKfycbzbhVNi7RTfaYyBgMfH7BxwlwBkuSoirF7ZRF8cpX9UbECIhqH5HRsa-rPfMRJM9oVsjQ/exec" method="post">
+        <fieldset>
+            <legend>Empresa</legend>
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text" value="Eficaz Facility"/>
+            <label for="cnpj">CNPJ</label>
+            <input id="cnpj" name="cnpj" type="text" value="37.129.474/0001-48"/>
+        </fieldset>
+        <fieldset>
+            <legend>Colaborador</legend>
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text"/>
+            <label for="admissao">Data de Admissão</label>
+            <input id="admissao" name="admissao" type="date"/>
+            <label for="salario">Salário</label>
+            <input id="salario" name="salario" step="0.01" type="number"/>
+            <label for="experiencia">Experiência</label>
+            <input id="experiencia" name="experiencia" type="text"/>
+            <label for="cc">C.C.</label><input id="cc" name="cc" type="text"/><label for="funcao">Função</label><input id="funcao" name="funcao" type="text"/><label for="adicional">Adicional</label><input id="adicional" name="adicional" type="text"/><label for="horario">Horário</label><input id="horario" name="horario" type="text"/></fieldset>
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <label for="nome_mae">Nome da Mãe</label>
+            <input id="nome_mae" name="nome_mae" type="text"/>
+            <label for="nome_pai">Nome do Pai</label>
+            <input id="nome_pai" name="nome_pai" type="text"/>
+            <label for="nascimento">Data de Nascimento</label>
+            <input id="nascimento" name="nascimento" type="date"/>
+            <label for="naturalidade">Naturalidade</label>
+            <input id="naturalidade" name="naturalidade" type="text"/>
+        </fieldset>
+        <fieldset>
+            <legend>Documentação</legend>
+            <label for="rg">RG</label>
+            <input id="rg" name="rg" type="text"/>
+            <label for="rg_uf">UF</label>
+            <input id="rg_uf" name="rg_uf" type="text"/>
+            <label for="rg_emissao">Data de Emissão do RG</label>
+            <input id="rg_emissao" name="rg_emissao" type="date"/>
+            <label for="cpf">CPF</label>
+            <input id="cpf" name="cpf" type="text"/>
+            <label for="ctps">CTPS</label>
+            <input id="ctps" name="ctps" type="text"/>
+            <label for="ctps_emissao">Data de Emissão da CTPS</label>
+            <input id="ctps_emissao" name="ctps_emissao" type="date"/>
+            <label for="ctps_serie">Série da CTPS</label>
+            <input id="ctps_serie" name="ctps_serie" type="text"/>
+            <label for="pis">PIS</label>
+            <input id="pis" name="pis" type="text"/>
+            <label for="pis_emissao">Data de Emissão do PIS</label>
+            <input id="pis_emissao" name="pis_emissao" type="date"/>
+            <label for="titulo_eleitor">Título de Eleitor</label>
+            <input id="titulo_eleitor" name="titulo_eleitor" type="text"/>
+            <label for="zona_secao">Zona/Seção</label>
+            <input id="zona_secao" name="zona_secao" type="text"/>
+        </fieldset>
+        <fieldset>
+            <legend>Endereço</legend>
+            <label for="endereco">Endereço</label>
+            <input id="endereco" name="endereco" type="text"/>
+            <label for="complemento">Complemento</label>
+            <input id="complemento" name="complemento" type="text"/>
+            <label for="cep">CEP</label>
+            <input id="cep" name="cep" type="text"/>
+            <label for="cidade_estado">Cidade/Estado</label>
+            <input id="cidade_estado" name="cidade_estado" type="text"/>
+        </fieldset>
+        <fieldset>
+            <legend>Dependentes</legend>
+            <label for="possui_dependentes">Possui Dependentes?</label>
+            <select id="possui_dependentes" name="possui_dependentes">
+                <option value="nao" selected>Não</option>
+                <option value="sim">Sim</option>
+            </select>
+            <div id="dependentes_campos">
+                <label class="dependente-campo">Dependente 1 - Nome</label><input class="dependente-campo" name="Dependente 1 - Nome" type="text"/>
+                <label class="dependente-campo">Dependente 1 - Nascimento</label><input class="dependente-campo" name="Dependente 1 - Nascimento" type="date"/>
+                <label class="dependente-campo">Dependente 1 - Parentesco</label><input class="dependente-campo" name="Dependente 1 - Parentesco" type="text"/>
+                <label class="dependente-campo">Dependente 2 - Nome</label><input class="dependente-campo" name="Dependente 2 - Nome" type="text"/>
+                <label class="dependente-campo">Dependente 2 - Nascimento</label><input class="dependente-campo" name="Dependente 2 - Nascimento" type="date"/>
+                <label class="dependente-campo">Dependente 2 - Parentesco</label><input class="dependente-campo" name="Dependente 2 - Parentesco" type="text"/>
+                <label class="dependente-campo">Dependente 3 - Nome</label><input class="dependente-campo" name="Dependente 3 - Nome" type="text"/>
+                <label class="dependente-campo">Dependente 3 - Nascimento</label><input class="dependente-campo" name="Dependente 3 - Nascimento" type="date"/>
+                <label class="dependente-campo">Dependente 3 - Parentesco</label><input class="dependente-campo" name="Dependente 3 - Parentesco" type="text"/>
+                <label class="dependente-campo">Dependente 4 - Nome</label><input class="dependente-campo" name="Dependente 4 - Nome" type="text"/>
+                <label class="dependente-campo">Dependente 4 - Nascimento</label><input class="dependente-campo" name="Dependente 4 - Nascimento" type="date"/>
+                <label class="dependente-campo">Dependente 4 - Parentesco</label><input class="dependente-campo" name="Dependente 4 - Parentesco" type="text"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Salário Família</legend>
+            <label for="salario_familia">Possui direito?</label>
+            <select id="salario_familia" name="salario_familia">
+                <option value="Sim">Sim</option>
+                <option selected="selected" value="Não">Não</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Contato</legend>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email"/>
+            <label for="pix">PIX</label>
+            <input id="pix" name="pix" type="text"/>
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel"/>
+        </fieldset>
+        <fieldset>
+            <legend>Responsável pelo Cadastro</legend>
+            <label for="data_responsavel">Data e Hora</label>
+            <input id="data_responsavel" name="Data" readonly="" type="text"/>
+            <label for="responsavel">Nome do Responsável</label>
+            <input id="responsavel" name="Nome do Responsável" required="" type="text"/>
+        </fieldset>
+        <div id="mensagem" style="display:none; color: green; font-weight: bold; margin-top: 20px;">
+            Dados salvos com sucesso!
+        </div>
+        <button id="botao-imprimir" onclick="window.print();" style="display:none; margin-top: 10px;">Imprimir Formulário</button>
+        <div style="text-align: right; margin-top: 10px;">
+            <button id="botao-enviar" type="submit">Salvar Dados</button>
+        </div>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const now = new Date();
+            const formatted = now.toLocaleString("pt-BR");
+            document.getElementById("data_responsavel").value = formatted;
 
-  // Formata o CPF ao sair do campo
-  const cpfField = document.querySelector("input[name='cpf']");
-  if (cpfField) {
-    cpfField.addEventListener("blur", function () {
-      let value = cpfField.value.replace(/\D/g, "");
-      if (value.length === 11) {
-        cpfField.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-      }
-    });
-  }
-});
-</script></body>
+            const mensagemSalvo = document.getElementById("mensagem");
+            const botaoImprimir = document.getElementById("botao-imprimir");
+            const formulario = document.querySelector("form");
+
+            formulario.addEventListener("submit", function(event) {
+                event.preventDefault();
+                const form = event.target;
+                const data = new FormData(form);
+
+                fetch(form.action, {
+                    method: "POST",
+                    body: data,
+                }).then(response => {
+                    if (response.ok) {
+                        mensagemSalvo.style.display = "block";
+                        botaoImprimir.style.display = "inline-block"; // Mostra o botão imprimir
+                        form.querySelectorAll("input, textarea, select").forEach(el => el.disabled = true);
+                    }
+                }).catch(error => {
+                    alert("Erro ao enviar os dados.");
+                });
+            });
+
+            const possuiDependentesSelect = document.getElementById("possui_dependentes");
+            const dependentesCampos = document.querySelectorAll(".dependente-campo");
+            const dependentesDiv = document.getElementById("dependentes_campos");
+
+            function toggleDependentes() {
+                if (possuiDependentesSelect.value === "sim") {
+                    dependentesCampos.forEach(campo => campo.style.display = "block");
+                } else {
+                    dependentesCampos.forEach(campo => campo.style.display = "none");
+                }
+            }
+
+            possuiDependentesSelect.addEventListener("change", toggleDependentes);
+
+            // Inicialmente esconde os campos de dependentes
+            toggleDependentes();
+        });
+    </script><script>
+        document.addEventListener("DOMContentLoaded", function () {
+        // Evita que Enter envie o formulário
+        document.querySelectorAll("input, select, textarea").forEach(el => {
+            el.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const formEls = Array.from(document.querySelectorAll("input, select, textarea"));
+                const index = formEls.indexOf(e.target);
+                if (index >= 0 && index < formEls.length - 1) {
+                formEls[index + 1].focus();
+                }
+            }
+            });
+        });
+
+        // Formata o CPF ao sair do campo
+        const cpfField = document.querySelector("input[name='cpf']");
+        if (cpfField) {
+            cpfField.addEventListener("blur", function () {
+            let value = cpfField.value.replace(/\D/g, "");
+            if (value.length === 11) {
+                cpfField.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            }
+            });
+        }
+        });
+    </script>
+</body>
 </html>

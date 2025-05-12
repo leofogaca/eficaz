@@ -59,7 +59,7 @@
 <body>
 
 <div style="margin-bottom: 20px;">
-    <img src="cropped-Eficaz_LogoHome.png" alt="Eficaz Facility" style="height: 60px; float: center;">
+    <img src="cropped-Eficaz_LogoHome.png" alt="Eficaz Facility" style="height: 60px; float: left;">
     <div style="clear: both;"></div>
 </div>
 
@@ -147,8 +147,27 @@
             <input type="text" name="cidade_estado" id="cidade_estado">
         </fieldset>
 
-        <fieldset>
-            <legend>Dependentes</legend>
+        
+<fieldset>
+    <legend>Dependentes</legend>
+    <label>Dependente 1 - Nome</label>
+    <input type="text" name="Dependente 1 - Nome">
+    <label>Dependente 1 - Nascimento</label>
+    <input type="date" name="Dependente 1 - Nascimento">
+    <label>Dependente 2 - Nome</label>
+    <input type="text" name="Dependente 2 - Nome">
+    <label>Dependente 2 - Nascimento</label>
+    <input type="date" name="Dependente 2 - Nascimento">
+    <label>Dependente 3 - Nome</label>
+    <input type="text" name="Dependente 3 - Nome">
+    <label>Dependente 3 - Nascimento</label>
+    <input type="date" name="Dependente 3 - Nascimento">
+    <label>Dependente 4 - Nome</label>
+    <input type="text" name="Dependente 4 - Nome">
+    <label>Dependente 4 - Nascimento</label>
+    <input type="date" name="Dependente 4 - Nascimento">
+</fieldset>
+
             <label for="dependente_nome">Nome do Dependente</label>
             <input type="text" name="dependente_nome" id="dependente_nome">
             <label for="dependente_parentesco">Membro (Parentesco)</label>
@@ -178,23 +197,49 @@
 
         <button type="submit">Enviar</button>
     
-        <fieldset>
-            <legend>Responsável pelo Cadastro</legend>
-            <label for="data_responsavel">Data e Hora</label>
-            <input type="text" name="Data" id="data_responsavel" readonly>
-            <label for="responsavel">Nome do Responsável</label>
-            <input type="text" name="Nome do Responsável" id="responsavel" required>
-        </fieldset>
+<fieldset>
+    <legend>Responsável pelo Cadastro</legend>
+    <label for="data_responsavel">Data e Hora</label>
+    <input type="text" name="Data" id="data_responsavel" readonly>
+    <label for="responsavel">Nome do Responsável</label>
+    <input type="text" name="Nome do Responsável" id="responsavel" required>
+</fieldset>
 
-        <script>
-            // Preenche automaticamente a data e hora atuais no campo "Data"
-            document.addEventListener("DOMContentLoaded", function() {
-                const now = new Date();
-                const formatted = now.toLocaleString("pt-BR");
-                document.getElementById("data_responsavel").value = formatted;
-            });
-        </script>
-    </form>
-    
+<div id="mensagem" style="display:none; color: green; font-weight: bold; margin-top: 20px;">
+    Dados salvos com sucesso!
+</div>
+
+<button type="submit">Enviar</button>
+
+<script>
+    // Preenche automaticamente a data e hora atuais no campo "Data"
+    document.addEventListener("DOMContentLoaded", function() {
+        const now = new Date();
+        const formatted = now.toLocaleString("pt-BR");
+        document.getElementById("data_responsavel").value = formatted;
+    });
+
+    // Mostrar mensagem após envio sem sair da página
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita o redirecionamento
+        const form = event.target;
+        const data = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: data,
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById("mensagem").style.display = "block";
+                form.reset();
+                document.getElementById("data_responsavel").value = new Date().toLocaleString("pt-BR");
+            }
+        }).catch(error => {
+            alert("Erro ao enviar os dados.");
+        });
+    });
+</script>
+</form>
+
 </body>
 </html>

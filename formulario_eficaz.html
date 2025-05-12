@@ -58,11 +58,6 @@
 </head>
 <body>
 
-<div style="margin-bottom: 20px;">
-    <img src="cropped-Eficaz_LogoHome.png" alt="Eficaz Facility" style="height: 60px; float: left;">
-    <div style="clear: both;"></div>
-</div>
-
     <h1>Ficha de Cadastro - Eficaz Facility</h1>
     <form action="https://script.google.com/macros/s/AKfycbxwt60UYYEQ43ti1tQwqPZRptohcnGLCOAQURZ_57HrhOFCiZGym5wg-kYbfSdSR06jpg/exec" method="post">
         <fieldset>
@@ -195,6 +190,8 @@
             <input type="tel" name="telefone" id="telefone">
         </fieldset>
 
+        <button type="submit">Enviar</button>
+    
 <fieldset>
     <legend>Responsável pelo Cadastro</legend>
     <label for="data_responsavel">Data e Hora</label>
@@ -237,7 +234,75 @@
         });
     });
 </script>
+
+<div id="mensagem" style="display:none; color: green; font-weight: bold; margin-top: 20px;">
+    Dados salvos com sucesso!
+</div>
+
+<button id="botao-imprimir" onclick="window.print();" style="display:none; margin-top: 10px;">Imprimir Formulário</button>
+
+<button type="submit">Enviar</button>
+
+<script>
+    // Preenche automaticamente a data e hora atuais no campo "Data"
+    document.addEventListener("DOMContentLoaded", function() {
+        const now = new Date();
+        const formatted = now.toLocaleString("pt-BR");
+        document.getElementById("data_responsavel").value = formatted;
+    });
+
+    // Mostrar mensagem e botão de impressão após envio sem sair da página
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita o redirecionamento
+        const form = event.target;
+        const data = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: data,
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById("mensagem").style.display = "block";
+                document.getElementById("botao-imprimir").style.display = "inline-block";
+                form.querySelectorAll("input, textarea, select").forEach(el => el.disabled = true);
+            }
+        }).catch(error => {
+            alert("Erro ao enviar os dados.");
+        });
+    });
+</script>
+
+<style>
+    @media print {
+        body {
+            background: white;
+            font-size: 12px;
+        }
+        form {
+            max-width: 100%;
+            padding: 0;
+            box-shadow: none;
+        }
+        button, #mensagem {
+            display: none !important;
+        }
+        input, textarea, select {
+            border: none;
+            padding: 0;
+        }
+        fieldset {
+            border: none;
+            margin-bottom: 10px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    }
+</style>
 </form>
+
 
 </body>
 </html>

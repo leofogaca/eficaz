@@ -1,114 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="utf-8"/>
-    <title>Consulta de Cadastro - Eficaz Facility</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        #consulta-form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 20px auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #0073e6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #005bb5;
-        }
-        #resultados {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        #resultados h2 {
-            color: #333;
-            margin-top: 0;
-        }
-        .campo-resultado {
-            margin-bottom: 8px;
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .campo-resultado strong {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Consulta de Cadastro - Eficaz Facility</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f5f5f5;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 16px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 30px;
+      background: white;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    #resultado th,
+    #resultado td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    #resultado th {
+      background-color: #0073e6;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Consulta de Cadastro - Eficaz Facility</h1>
-    <form id="consulta-form">
-        <label for="termo_busca">Digite o CPF ou Nome:</label>
-        <input type="text" id="termo_busca" name="termo_busca" required>
-        <button type="button" onclick="buscarDados()">Buscar</button>
-    </form>
-    <div id="resultados" style="display: none;">
-        <h2>Resultados da Busca</h2>
-        </div>
+  <h2>Consulta de Cadastro</h2>
+  <p>Digite o CPF para consultar (com ou sem pontos/traços):</p>
+  <input type="text" id="cpf" placeholder="Digite o CPF do colaborador">
+  <button onclick="buscar()">Consultar</button>
 
-    <script>
-        function buscarDados() {
-            const termoBusca = document.getElementById("termo_busca").value;
-            const resultadosDiv = document.getElementById("resultados");
-            resultadosDiv.style.display = "none"; // Oculta resultados anteriores
+  <div id="dados" style="display:none;">
+    <h3>Dados do Colaborador</h3>
+    <table id="resultado"></table>
+  </div>
 
-            if (!termoBusca.trim()) {
-                alert("Por favor, digite um CPF ou nome para buscar.");
-                return;
-            }
+  <script>
+    function buscar() {
+      const cpfDigitado = document.getElementById("cpf").value.replace(/\D/g, '');
+      if (!cpfDigitado || cpfDigitado.length !== 11) {
+        alert("Digite um CPF válido com 11 dígitos.");
+        return;
+      }
 
-            google.script.run.withSuccessHandler(function(dados) {
-                if (dados && dados.length > 0) {
-                    resultadosDiv.innerHTML = "<h2>Resultados da Busca</h2>";
-                    dados.forEach(function(linha) {
-                        resultadosDiv.innerHTML += `<div class='campo-resultado'><strong>Nome:</strong> ${linha.nome}</div>`;
-                        resultadosDiv.innerHTML += `<div class='campo-resultado'><strong>CPF:</strong> ${linha.cpf}</div>`;
-                        resultadosDiv.innerHTML += `<div class='campo-resultado'><strong>Data de Admissão:</strong> ${linha.admissao}</div>`;
-                        // Adicione aqui os outros campos que você deseja exibir
-                    });
-                    resultadosDiv.style.display = "block";
-                } else {
-                    resultadosDiv.innerHTML = "<p>Nenhum resultado encontrado.</p>";
-                    resultadosDiv.style.display = "block";
-                }
-            }).buscarColaborador(termoBusca);
-        }
-    </script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxr0zYboOQ-hVTXBdhG2PmYLxqzTNmQNipbxSP2szeFXGZ-PmW8cQsIEEgGlyKN97_XaQ/exec"; // Sua URL aqui
+      fetch(scriptURL + "?cpf=" + cpfDigitado)
+        .then(res => res.json())
+        .then(data => {
+          const tabela = document.getElementById("resultado");
+          const divDados = document.getElementById("dados");
+          tabela.innerHTML = "";
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://ssl.gstatic.com/sites/p/drive/app/js/api.js" id="script-api" async defer></script>
+          if (!data || data.length === 0) {
+            tabela.innerHTML = "<tr><td>Nenhum colaborador encontrado com esse CPF.</td></tr>";
+          } else {
+            Object.entries(data[0]).forEach(([chave, valor]) => {
+              const linha = "<tr><th>" + chave + "</th><td>" + valor + "</td></tr>";
+              tabela.innerHTML += linha;
+            });
+          }
+
+          divDados.style.display = "block";
+        })
+        .catch(error => {
+          console.error(error);
+          alert("Erro ao buscar dados.");
+        });
+    }
+  </script>
 </body>
+
 </html>

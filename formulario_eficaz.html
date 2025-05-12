@@ -1,139 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8"/>
-    <title>Ficha de Cadastro - Eficaz Facility</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 800px;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        fieldset {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        legend {
-            font-weight: bold;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background-color: #0073e6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            float: right;
-        }
-        button:hover {
-            background-color: #005bb5;
-        }
-        .dependente-campo {
-            display: none; /* Inicialmente escondidos */
-        }
-    </style>
-    <style>
-        @media print {
-            * {
-                font-size: 9px !important;
-                line-height: 1.1;
-            }
-            body {
-                margin: 5mm;
-                padding: 0;
-                background: white;
-                -webkit-column-count: 2; /* Para Chrome, Safari */
-                -moz-column-count: 2;    /* Para Firefox */
-                column-count: 2;         /* Propriedade padrão */
-                -webkit-column-gap: 10px;
-                -moz-column-gap: 10px;
-                column-gap: 10px;
-            }
-            h1 {
-                font-size: 12px;
-                margin-bottom: 8px;
-                break-after: avoid;
-            }
-            form {
-                padding: 8px;
-                margin: 0;
-                width: 100%;
-                box-shadow: none;
-            }
-            fieldset {
-                border: 1px solid #000;
-                margin: 3px 0;
-                padding: 5px;
-                page-break-inside: avoid;
-                break-inside: avoid-column;
-            }
-            legend {
-                font-weight: bold;
-                font-size: 10px;
-                break-after: avoid;
-            }
-            label {
-                font-weight: normal;
-                display: block; /* Melhor para layout em colunas */
-                width: 100%;
-                margin: 2px 0 0 0;
-                padding: 0;
-                vertical-align: top;
-                break-after: avoid;
-            }
-            input, select, textarea {
-                width: 100%;
-                display: block;
-                border: none;
-                border-bottom: 1px solid #000;
-                padding: 2px 4px;
-                margin: 2px 0 5px 0;
-                background: none;
-                vertical-align: top;
-                break-before: avoid;
-            }
-            textarea {
-                height: 30px;
-            }
-            button#botao-enviar {
-                display: block !important; /* Garante que o botão salvar sempre apareça na impressão */
-            }
-        }
-    </style>
+  <meta charset="utf-8"/>
+  <title>Ficha de Cadastro - Eficaz Facility</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+header {
+  background-color: #3c4a6e;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #0073e6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    #mensagem {
+      display: none;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .dependente-campo {
+      display: none;
+    }
+
+    .botoes-final {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+   @media print {
+  body {
+    background-color: white;
+    font-size: 8.5px;
+    margin: 0;
+    padding: 0;
+    color: black;
+  }
+
+  header {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 4px;
+  }
+
+  header h2 {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  main {
+    box-shadow: none;
+    max-width: 100%;
+    padding: 8px;
+    margin: 0;
+    column-count: 2;
+    column-gap: 14px;
+  }
+
+  fieldset {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #000;
+    padding: 6px;
+    margin: 4px 0;
+  }
+
+  legend {
+    font-size: 9px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  label {
+    margin: 2px 0 1px 0;
+    font-size: 8px;
+  }
+
+  input, select, textarea {
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 1px 3px;
+    background: none;
+    font-size: 8px;
+  }
+
+  .botoes-final,
+  #mensagem {
+    display: none !important;
+  }
+
+  #botao-imprimir {
+    display: block !important;
+  }
+}
+
+  </style>
 </head>
 <body>
+  <header>
     <h2>Ficha de Cadastro - Eficaz Facility</h2>
+  </header>
+  <main>
     <form action="https://script.google.com/macros/s/AKfycbyuvoQ6_n7kAL_QhGTkWCTbPM2s6p7fhfcC6VaJ29c4hFNm1ZIZmxNNhym2imblwHCJiA/exec" method="post">
-        <fieldset>
+       <fieldset>
             <legend>Empresa</legend>
             <label for="empresa">Empresa</label>
             <input id="empresa" name="empresa" type="text" value="Eficaz Facility"/>
@@ -237,95 +270,54 @@
             <label for="telefone">Telefone</label>
             <input id="telefone" name="telefone" type="tel"/>
         </fieldset>
-        <fieldset>
-            <legend>Responsável pelo Cadastro</legend>
-            <label for="data_responsavel">Data e Hora</label>
-            <input id="data_responsavel" name="Data" readonly="" type="text"/>
-            <label for="responsavel">Nome do Responsável*</label>
-            <input id="responsavel" name="Nome do Responsável" required="" type="text"/>
-        </fieldset>
+      <fieldset>
+        <legend>Responsável pelo Cadastro</legend>
+        <label for="data_responsavel">Data e Hora</label>
+        <input id="data_responsavel" name="Data" readonly type="text"/>
+        <label for="responsavel">Nome do Responsável*</label>
+        <input id="responsavel" name="Nome do Responsável" required type="text"/>
+      </fieldset>
 
-        <div id="mensagem" style="display:none; color: green; font-weight: bold; margin-top: 20px;">
-            Dados salvos com sucesso!
-        </div>
-        <button id="botao-imprimir" onclick="window.print();" style="display:none; margin-top: 10px;">Imprimir Formulário</button>
-        <div style="text-align: right; margin-top: 10px;">
-            <button id="botao-enviar" type="submit">Salvar Dados</button>
-        </div>
+      <div id="mensagem">Dados salvos com sucesso!</div>
+      <div class="botoes-final">
+        <button id="botao-imprimir" onclick="window.print();" type="button" style="display:none;">Imprimir Formulário</button>
+        <button id="botao-enviar" type="submit">Salvar Dados</button>
+      </div>
     </form>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const now = new Date();
-            const formatted = now.toLocaleString("pt-BR");
-            document.getElementById("data_responsavel").value = formatted;
+  </main>
 
-            const mensagemSalvo = document.getElementById("mensagem");
-            const botaoImprimir = document.getElementById("botao-imprimir");
-            const formulario = document.querySelector("form");
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("data_responsavel").value = new Date().toLocaleString("pt-BR");
 
-            formulario.addEventListener("submit", function(event) {
-                event.preventDefault();
-                const form = event.target;
-                const data = new FormData(form);
+      const form = document.querySelector("form");
+      const mensagem = document.getElementById("mensagem");
+      const imprimir = document.getElementById("botao-imprimir");
 
-                fetch(form.action, {
-                    method: "POST",
-                    body: data,
-                }).then(response => {
-                    if (response.ok) {
-                        mensagemSalvo.style.display = "block";
-                        botaoImprimir.style.display = "inline-block"; // Mostra o botão imprimir
-                        form.querySelectorAll("input, textarea, select").forEach(el => el.disabled = true);
-                    }
-                }).catch(error => {
-                    alert("Erro ao enviar os dados.");
-                });
-            });
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const dados = new FormData(form);
 
-            const possuiDependentesSelect = document.getElementById("possui_dependentes");
-            const dependentesCampos = document.querySelectorAll(".dependente-campo");
-            const dependentesDiv = document.getElementById("dependentes_campos");
+        fetch(form.action, {
+          method: "POST",
+          body: dados,
+        }).then(response => {
+          if (response.ok) {
+            mensagem.style.display = "block";
+            imprimir.style.display = "inline-block";
+            form.querySelectorAll("input, textarea, select").forEach(el => el.disabled = true);
+          }
+        }).catch(() => alert("Erro ao enviar os dados."));
+      });
 
-            function toggleDependentes() {
-                if (possuiDependentesSelect.value === "sim") {
-                    dependentesCampos.forEach(campo => campo.style.display = "block");
-                } else {
-                    dependentesCampos.forEach(campo => campo.style.display = "none");
-                }
-            }
-
-            possuiDependentesSelect.addEventListener("change", toggleDependentes);
-
-            // Inicialmente esconde os campos de dependentes
-            toggleDependentes();
+      const selectDependentes = document.getElementById("possui_dependentes");
+      const campos = document.querySelectorAll(".dependente-campo");
+      selectDependentes.addEventListener("change", () => {
+        campos.forEach(campo => {
+          campo.style.display = selectDependentes.value === "sim" ? "block" : "none";
         });
-    </script><script>
-        document.addEventListener("DOMContentLoaded", function () {
-        // Evita que Enter envie o formulário
-        document.querySelectorAll("input, select, textarea").forEach(el => {
-            el.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-                e.preventDefault();
-                const formEls = Array.from(document.querySelectorAll("input, select, textarea"));
-                const index = formEls.indexOf(e.target);
-                if (index >= 0 && index < formEls.length - 1) {
-                formEls[index + 1].focus();
-                }
-            }
-            });
-        });
-
-        // Formata o CPF ao sair do campo
-        const cpfField = document.querySelector("input[name='cpf']");
-        if (cpfField) {
-            cpfField.addEventListener("blur", function () {
-            let value = cpfField.value.replace(/\D/g, "");
-            if (value.length === 11) {
-                cpfField.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-            }
-            });
-        }
-        });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>

@@ -78,6 +78,7 @@
                 font-size: 12px;
                 margin-bottom: 8px;
                 break-after: avoid;
+                column-span: all; /* Ocupa toda a largura antes das colunas */
             }
             form {
                 padding: 8px;
@@ -92,6 +93,13 @@
                 page-break-inside: avoid;
                 break-inside: avoid-column;
             }
+            fieldset:nth-child(1), /* Empresa */
+            fieldset:nth-child(2), /* Colaborador */
+            fieldset:nth-child(3), /* Dados Pessoais */
+            fieldset:nth-child(4)  /* Documentação */
+            {
+                column-span: all; /* Força esses fieldsets a ocupar a largura total */
+            }
             legend {
                 font-weight: bold;
                 font-size: 10px;
@@ -99,7 +107,7 @@
             }
             label {
                 font-weight: normal;
-                display: block; /* Melhor para layout em colunas */
+                display: block;
                 width: 100%;
                 margin: 2px 0 0 0;
                 padding: 0;
@@ -121,7 +129,7 @@
                 height: 30px;
             }
             button#botao-enviar {
-                display: block !important; /* Garante que o botão salvar sempre apareça na impressão */
+                display: block !important;
             }
         }
     </style>

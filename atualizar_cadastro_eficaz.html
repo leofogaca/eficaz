@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Atualizar Cadastro - Eficaz Facility</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+    h2 { text-align: center; }
+    #cpf-busca {
+      width: 250px;
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #busca-area {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    label { font-weight: bold; margin-top: 10px; display: block; }
+    button {
+      padding: 10px 16px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .formulario, #form-edicao {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Atualizar Dados do Cadastro</h2>
+
+<div id="busca-area">
+  <input type="text" id="cpf-busca" placeholder="Digite o CPF do colaborador">
+  <button onclick="buscar()">Buscar Cadastro</button>
+</div>
+
+<div id="form-edicao">
+  <form id="formulario-edicao" onsubmit="atualizarCadastro(event)">
+    <div id="campos"></div>
+    <button type="submit">Salvar Atualizações</button>
+  </form>
+</div>
+
+<script>
+function buscar() {
+  const cpf = document.getElementById("cpf-busca").value.replace(/\D/g, '');
+  if (cpf.length !== 11) {
+    alert("Digite um CPF válido com 11 dígitos.");
+    return;
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbwk9-00KKNLIg0Kmove-OrbqKqT0mHlenwhQ5BerkF2Hb51AmxCEBDUL5FRW8N9Lki_/exec?cpf=" + cpf)
+    .then(response => response.json())
+    .then(data => {
+      if (!data || data.length === 0) {
+        alert("Nenhum cadastro encontrado.");
+        return;
+      }
+
+      const item = data[0];
+      const camposDiv = document.getElementById("campos");
+      camposDiv.innerHTML = "";
+
+      for (let chave in item) {
+        const label = document.createElement("label");
+        label.innerText = chave;
+
+        let input;
+        if (chave.toLowerCase() === "status") {
+          input = document.createElement("select");
+          input.name = chave;
+          const opcoes = ["", "Ativo", "Inativo"];
+          opcoes.forEach(op => {
+            const opt = document.createElement("option");
+            opt.value = op;
+            opt.text = op;
+            if (item[chave] === op) opt.selected = true;
+            input.appendChild(opt);
+          });
+        } else {
+          input = document.createElement("input");
+          input.name = chave;
+          input.value = item[chave];
+        }
+
+        camposDiv.appendChild(label);
+        camposDiv.appendChild(input);
+      }
+
+      // Adiciona o campo oculto para garantir o envio correto do CPF sem máscara
+      const cpfHidden = document.createElement("input");
+      cpfHidden.type = "hidden";
+      cpfHidden.name = "cpf";
+      cpfHidden.value = cpf;
+      camposDiv.appendChild(cpfHidden);
+
+      document.getElementById("form-edicao").style.display = "block";
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erro ao buscar dados.");
+    });
+}
+
+function atualizarCadastro(event) {
+  event.preventDefault();
+  const form = event.target;
+  const dados = new FormData(form);
+
+  fetch("https://script.google.com/macros/s/AKfycbwk9-00KKNLIg0Kmove-OrbqKqT0mHlenwhQ5BerkF2Hb51AmxCEBDUL5FRW8N9Lki_/exec", {
+    method: "POST",
+    body: dados
+  })
+  .then(response => response.text())
+  .then(msg => {
+    alert("Cadastro atualizado com sucesso!");
+    location.reload();
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Erro ao atualizar cadastro.");
+  });
+}
+</script>
+
+</body>
+</html>
